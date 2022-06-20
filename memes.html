@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet"> 
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       
+    }
+  body{
+    text-align: center;
+    background-color: #774360;
+  }
+  #heading{
+     color: white;
+     font-family: joan,serif;
+     font-size: 40px;
+     margin: 40px;
+  }
+  p{
+    color: rgb(255, 255, 255);
+    font-family: joan,serif;
+    font-size: 20px;
+    margin: 10px;
+
+  }
+  .drum{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    margin: 10px;
+    font-size: 100px;
+    padding: 10px;
+}
+ .a{
+    background-image: url('images/arrownaresh.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
+ .s{
+    background-image: url('images/megana.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+ }
+ .d{
+    background-image: url('images/pavankalyan.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+ }
+ button{
+    color: rgb(206, 99, 11);
+ }
+ .opacity{
+    box-shadow: 0 3px 4px 0 #DBEDF3;
+  opacity: 0.5;
+ }
+
+</style>
+</head>
+<body>
+    <h1 id="heading">memes 🥁 Kit </h1>
+    <p> press keys or click on them to play</p>
+    <div class="drumContainer">
+        <button class="a drum">a</button>
+        <button class="s drum">s</button>
+        <button class="d drum">d</button>
+        
+    </div>
+    <script>
+        characters=['a','s','d'];
+        var audioarray=['sounds/arrownaresh.mp3','sounds/megana.mp3','sounds/pavankalyan.mp3','sounds/tom1.mp3','sounds/tom2.mp3','sounds/tom3.mp3','sounds/tom4.mp3']
+        var buttons=document.querySelectorAll('button');
+        for(let i=0;i<buttons.length;i++)
+        buttons[i].addEventListener('click',function(){ 
+            playmusic(this.innerHTML);
+            animate(this.innerHTML);
+        });
+        document.addEventListener('keypress',function(value){
+            playmusic(value.key);
+            animate(value.key);
+        })
+        function playmusic( word)
+        {
+            switch(word)
+            {
+              
+                 case 'a':
+                     var audio=new Audio(audioarray[0]);
+                     audio.play();
+                     break;
+                case 's':
+                     var audio=new Audio(audioarray[1]);
+                     audio.play();
+                     break;
+                case 'd':
+                     var audio=new Audio(audioarray[2]);
+                     audio.play();
+                     break;
+               
+            }
+        }
+        function animate(word){
+            document.querySelector('.'+word).classList.add('opacity');
+            setTimeout(function(){
+            document.querySelector('.'+word).classList.remove('opacity');
+                
+            },100);
+        }
+
+    </script>
+</body>
+</html>
